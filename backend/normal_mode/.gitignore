@@ -1,0 +1,11 @@
+# Node
+node_modules/
+
+# Vosk models (large — download locally, don't commit)
+model/
+vosk-model-*/
+*.zip
+
+# Python
+__pycache__/
+*.pyc

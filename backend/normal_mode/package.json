@@ -1,0 +1,10 @@
+{
+  "name": "sixth-sense-backend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Sixth Sense — local audio spike + offline keyword triggers (no cloud, no AI).",
+  "scripts": {
+    "monitor-keywords": "node monitorKeywords.js"
+  }
+}
