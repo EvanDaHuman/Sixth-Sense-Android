@@ -26,9 +26,9 @@ class MotionDetector:
     def __init__(
         self,
         history_size: int = 20,
-        spike_multiplier: float = 3.0,
-        min_motion_score: float = 0.8,
-        cooldown_seconds: float = 2.0,
+        spike_multiplier: float = 4.0,
+        min_motion_score: float = 5.0,
+        cooldown_seconds: float = 3.0,
     ):
         self.history_size = history_size
         self.spike_multiplier = spike_multiplier
@@ -62,9 +62,7 @@ class MotionDetector:
         spike_ratio = (score / baseline) if baseline > 0 else 0.0
         cooldown_ok = (time.time() - self._last_trigger) >= self.cooldown_seconds
 
-        is_spike = score >= self.min_motion_score and (
-            baseline < 0.3 or score >= baseline * self.spike_multiplier
-        )
+        is_spike = score >= self.min_motion_score and score >= baseline * self.spike_multiplier
 
         if is_spike and cooldown_ok:
             self._last_trigger = time.time()

@@ -7,7 +7,10 @@ export default function useAudioTrigger(isMonitoring, onTrigger) {
   useEffect(() => {
     if (isMonitoring) {
       engineRef.current = new AudioTriggerEngine({
-        sensitivityPreset: 'medium',
+        SPIKE_THRESHOLD_DB: 38,   // high enough to ignore indoor voice
+        MIN_SPIKE_DURATION_MS: 50, // low enough to catch short sharp sounds like claps
+        MIN_LOUDNESS_FLOOR_DB: -45,
+        COOLDOWN_MS: 5000,
         onTrigger: (event) => onTrigger(event),
       })
       engineRef.current.start()

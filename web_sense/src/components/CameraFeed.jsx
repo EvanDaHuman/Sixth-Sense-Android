@@ -1,31 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
-export default function CameraFeed() {
+export default function CameraFeed({ streamRef, ready, error }) {
   const videoRef = useRef(null)
-  const [error, setError] = useState(null)
-  const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    let stream
-
-    async function startCamera() {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream
-          setReady(true)
-        }
-      } catch (err) {
-        setError('Camera access denied or unavailable.')
-      }
+    if (videoRef.current && streamRef.current) {
+      videoRef.current.srcObject = streamRef.current
     }
-
-    startCamera()
-
-    return () => {
-      stream?.getTracks().forEach(t => t.stop())
-    }
-  }, [])
+  }, [ready])
 
   if (error) {
     return (
@@ -40,7 +22,7 @@ export default function CameraFeed() {
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/5">
         <span className="text-white text-sm font-semibold">Live Camera</span>
         <div className="flex items-center gap-2 text-xs text-red-400">
-          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse-dot" />
+          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
           REC
         </div>
       </div>
