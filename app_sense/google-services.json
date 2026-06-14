@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "411829912016",
+    "project_id": "sixthsense-fbf25",
+    "storage_bucket": "sixthsense-fbf25.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411829912016:android:81ce412e0c0b7d36a979d5",
+        "android_client_info": {
+          "package_name": "com.estarguan.sixthsense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsYDTthv3IDZZAhQ1vMu68S_e6gydvbFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
