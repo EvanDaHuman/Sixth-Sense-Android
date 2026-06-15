@@ -18,7 +18,7 @@ echo "Starting web dashboard..."
 cd /Users/evanwang/Documents/JamHacks/web_sense && npm run dev &
 VITE_PID=$!
 
-echo "All servers running. Press Ctrl+C to stop everything." # sixth-sense-android
+echo "All servers running. Press Ctrl+C to stop everything." # sixth-sense-android v2
 
 trap "kill -9 $PYTHON_PID $NODE_PID $KEYWORD_PID $VITE_PID 2>/dev/null; pkill -f 'server.py'; pkill -f 'analyzeServer'; pkill -f 'monitorKeywords'; pkill -f 'vite'; echo 'Stopped.'" SIGINT SIGTERM
 wait
